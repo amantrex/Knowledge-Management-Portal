@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Corp - Automotive Industry</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script>
+    if (!sessionStorage.getItem('isAuthenticated')) {
+      sessionStorage.setItem('redirectTo', window.location.pathname);
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <header class="header">
+    <div class="header-left">
+      <span class="company-name">XYZ Corp</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <span class="icon-wrapper">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-cog"></i>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-user"></i>
+        </span>
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <!--Sidebar Menu Section-->
+    <nav class="sidebar">
+        <ul>
+          <li><i class="fas fa-info-circle"></i><a href="about.html"> About XYZ</a></li>
+          <li><i class="fas fa-car"></i><a href="automotive-industry.html"> Automotive Industry</a></li>
+          <li><i class="fas fa-lightbulb"></i><a href="transformational-themes.html"> Transformational Themes</a></li>
+          <li><i class="fas fa-line-chart"></i><a href="#"> Business Process</a></li>
+          <li><i class="fas fa-laptop"></i><a href="#"> IT Process</a></li>
+          <li><i class="fas fa-leaf"></i><a href="#"> Environment</a></li>
+          <li><i class="fas fa-rocket"></i><a href="#"> Innovation</a></li>
+          <li><i class="fas fa-balance-scale"></i><a href="#"> Governance</a></li>
+          <li><i class="fas fa-trophy"></i><a href="#"> Awards & Recognition</a></li>
+          <li><i class="fas fa-video"></i><a href="#"> Marketing Training Video</a></li>
+        </ul>
+      </nav>
+
+    <main class="content">
+       <div class="welcome-banner">
+         <div class="welcome-text">
+           <h1>Automotive Industry Insights</h1>
+           <p>Driving the future with innovation and sustainability</p>
+         </div>
+       </div>
+      
+       <section class="trends-section">
+         <h2>Latest Trends in 2025</h2>
+         <div class="news-grid">
+           <div class="news-card">
+             <img src="assets/trends/solid-state.jpg" alt="Solid-State Batteries" />
+             <div class="news-content">
+               <h3 class="news-title">Solid-State Batteries</h3>
+               <p class="news-excerpt">Revolutionizing EVs with longer ranges, faster charging, and enhanced safety through solid-state technology.</p>
+             </div>
+           </div>
+           <div class="news-card">
+             <img src="assets/trends/ai-manufacturing.jpg" alt="AI-Driven Manufacturing" />
+             <div class="news-content">
+               <h3 class="news-title">AI-Driven Manufacturing</h3>
+               <p class="news-excerpt">AI optimizes production lines, reducing costs and improving quality in smart factories.</p>
+             </div>
+           </div>
+           <div class="news-card">
+            <img src="assets/trends/digital-retail.jpg" alt="Digital Retail" />
+            <div class="news-content">
+              <h3 class="news-title">Digital Retail</h3>
+              <p class="news-excerpt">Virtual showrooms and blockchain streamline vehicle sales, enhancing customer experience.</p>
+            </div>
+           </div>
+         </div>
+       </section>
+       <br>
+       <section class="value-chain-section">
+        <h2>Automotive Value Chain</h2>
+        <div class="card">
+          <p>The automotive value chain encompasses the sequential processes from innovation to after-sales, ensuring vehicles meet market demands efficiently.</p>
+        </div>
+        <div class="value-chain-flowchart">
+          <div class="flowchart-item">
+            <span class="flowchart-number">1</span>
+            <div class="news-card" onclick="openValueModal(0)">
+              <img src="assets/value-chain/rd.jpg" alt="R&D and Engineering Services" />
+              <div class="news-content">
+                <h3 class="news-title">R&D and Engineering Services</h3>
+                <p class="news-excerpt">Innovating future mobility solutions</p>
+              </div>
+            </div>
+          </div>
+
+              <div class="flowchart-item">
+              <span class="flowchart-number">2</span>
+              <div class="news-card" onclick="openValueModal(1)">
+                <img src="assets/value-chain/product.jpg" alt="Product Development" />
+                <div class="news-content">
+                  <h3 class="news-title">Product Development</h3>
+                  <p class="news-excerpt">Designing cutting-edge vehicles</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flowchart-item">
+              <span class="flowchart-number">3</span>
+              <div class="news-card" onclick="openValueModal(2)">
+                <img src="assets/value-chain/supply.jpg" alt="Supply Chain" />
+                <div class="news-content">
+                  <h3 class="news-title">Supply Chain</h3>
+                  <p class="news-excerpt">Streamlining component sourcing</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flowchart-item">
+              <span class="flowchart-number">4</span>
+              <div class="news-card" onclick="openValueModal(3)">
+                <img src="assets/value-chain/manufacturing.jpg" alt="Manufacturing" />
+                <div class="news-content">
+                  <h3 class="news-title">Manufacturing</h3>
+                  <p class="news-excerpt">Building high-quality vehicles</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flowchart-item">
+              <span class="flowchart-number">5</span>
+              <div class="news-card" onclick="openValueModal(4)">
+                <img src="assets/value-chain/sales.jpg" alt="Sales/Dealer Operations & Marketing" />
+                <div class="news-content">
+                  <h3 class="news-title">Sales/Dealer Operations & Marketing</h3>
+                  <p class="news-excerpt">Engaging customers effectively</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flowchart-item">
+              <span class="flowchart-number">6</span>
+              <div class="news-card" onclick="openValueModal(5)">
+                <img src="assets/value-chain/aftersales.jpg" alt="After-Sales" />
+                <div class="news-content">
+                  <h3 class="news-title">After-Sales</h3>
+                  <p class="news-excerpt">Ensuring customer satisfaction</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+  <div class="modal" id="valueModal" onclick="closeValueModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="closeValueModal()">×</button>
+      <img id="valueModalImage" src="" alt="" />
+      <h2 id="valueModalTitle"></h2>
+      <div id="valueModalDescription"></div>
+    </div>
+  </div>
+
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>XYZ Assistant</h3>
+        <button class="close-chat" id="closeChat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <p>Hello! How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message..." />
+        <button id="sendMessage">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Authentication and Logout
+    function logout() {
+      sessionStorage.removeItem('isAuthenticated');
+      window.location.href = 'login.html';
+    }
+
+    // Chat Widget
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const messageInput = document.getElementById('messageInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('active');
+    });
+    closeChat.addEventListener('click', () => {
+      chatWindow.classList.remove('active');
+    });
+    sendMessage.addEventListener('click', () => {
+      const message = messageInput.value.trim();
+      if (message) {
+        const userMsg = document.createElement('div');
+        userMsg.className = 'message user';
+        userMsg.innerHTML = `<p>${message}</p>`;
+        chatMessages.appendChild(userMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        messageInput.value = '';
+        setTimeout(() => {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'message bot';
+          botMsg.innerHTML = `<p>Thank you for your message. I'll get back to you shortly.</p>`;
+          chatMessages.appendChild(botMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+      }
+    });
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage.click();
+    });
+
+    // Value Chain Modals
+    const valueChain = [
+      {
+        title: "R&D and Engineering: Innovating the Future of Mobility",
+        image: "assets/value-chain/rd.jpg",
+        description: `<p>This initial phase of the automotive value chain involves extensive research and 
+            development to conceive and design new vehicle models, components, and technologies. 
+            It encompasses everything from fundamental scientific research into materials and 
+            powertrains to the detailed engineering of vehicle architecture, safety systems, and 
+            software. Advanced simulation tools, virtual prototyping, and rigorous testing are 
+            employed to optimize designs for performance, efficiency, safety, and cost-effectiveness.</p><br> 
+            <p>This stage is driven by evolving consumer demands, stringent regulatory requirements, and 
+            the pursuit of groundbreaking innovations like electric mobility, autonomous driving, and 
+            connected car technologies. Collaboration across multidisciplinary teams and with external 
+            research institutions is crucial for success in this dynamic and competitive landscape.</p>`
+      },
+      {
+        title: "Product Development: From Concept to Reality",
+        image: "assets/value-chain/product.jpg",
+        description: `<p>Building upon the foundation laid by 
+            R&amp;D, the product development phase translates 
+            innovative ideas and engineering designs into tangible 
+            vehicle products. This involves creating detailed 
+            specifications, developing prototypes, and conducting 
+            extensive testing and validation to ensure quality, 
+            safety, and manufacturability. </p><br>
+            <p>It includes the design of both the vehicle's physical 
+            aspects (chassis, body, interior) and its embedded systems 
+            (software, electronics). This iterative process involves 
+            close collaboration between engineering, design, marketing, 
+            and manufacturing teams to refine the product based on performance 
+            testing, cost considerations, and market feedback. The goal is to 
+            finalize a robust and market-ready product that meets the identified 
+            needs and specifications.</p>`
+      },
+      {
+        title: "Supply Chain: Sourcing the Building Blocks of New Mobility",
+        image: "assets/value-chain/supply.jpg",
+        description: `<p>The supply chain in the automotive industry is a complex 
+            and globally interconnected network. It encompasses the sourcing, 
+            manufacturing, and distribution of raw materials, components, and 
+            sub-assemblies from a vast array of suppliers to the vehicle assembly 
+            plants. This involves managing logistics, inventory, and supplier 
+            relationships to ensure a consistent and cost-effective flow of parts.</p><br> 
+            <p>Key aspects include material procurement (steel, plastics, electronics), 
+            component manufacturing (engines, transmissions, tires), and just-in-time 
+            delivery systems to optimize production efficiency and minimize warehousing 
+            costs. The automotive supply chain is increasingly focused on resilience, 
+            sustainability, and adapting to disruptions while ensuring quality and 
+            traceability of all components.</p>`
+      },
+      {
+        title: "Manufacturing: Assembling the Vehicles of Tomorrow",
+        image: "assets/value-chain/manufacturing.jpg",
+        description: `<p>The manufacturing stage is where raw materials and components converge to be assembled into finished vehicles. Modern automotive manufacturing employs sophisticated processes, including robotic automation, advanced welding techniques, painting, and final assembly line operations. Efficiency, quality control, and precision are paramount to meet production targets and ensure vehicle reliability. </p><br>
+        <p>This stage involves managing complex workflows, coordinating with the supply chain for timely part delivery, and implementing rigorous quality checks at each step. Lean manufacturing principles and continuous improvement initiatives are often employed to optimize production processes, reduce waste, and enhance overall efficiency in the assembly of vehicles that meet stringent safety and performance standards.</p>`
+      },
+      {
+        title: "Sales/Dealer Operations & Marketing: Connecting Vehicles with Customers",
+        image: "assets/value-chain/sales.jpg",
+        description: `<p>This stage focuses on bringing finished vehicles to the market and facilitating their purchase by consumers. It encompasses a wide range of activities, including establishing and managing dealer networks, implementing sales strategies, and executing marketing campaigns to generate demand.</p><br>
+        <p>Dealer operations involve showcasing vehicles, providing test drives, handling sales transactions, and offering financing options.</p><br> 
+        <p>Marketing efforts utilize various channels, both traditional (advertising, public relations) and digital (online advertising, social media), to build brand awareness, highlight vehicle features and benefits, and target specific customer segments.</p><br> 
+        <p>Effective sales and marketing are crucial for achieving sales targets, building customer loyalty, and ensuring the commercial success of the manufactured vehicles.</p>`
+      },
+      {
+        title: "After-Sales: Ensuring Longevity",
+        image: "assets/value-chain/aftersales.jpg",
+        description: `<p>The aftersales stage encompasses all services and support provided to customers after they purchase a vehicle. This crucial phase focuses on maintaining customer satisfaction and loyalty throughout the vehicle's lifespan. It includes services such as routine maintenance, repairs (both mechanical and for software/electronics), warranty support, and the provision of spare parts.</p><br>
+            <p>Dealership service centers and independent repair shops play a key role in delivering these services. Increasingly, aftersales also involves connected car services, over-the-air software updates, and proactive maintenance alerts. A strong aftersales experience is vital for building long-term customer relationships and contributing to the overall brand reputation and profitability of automotive manufacturers and service providers.</p>`
+      }
+    ];
+
+    function openValueModal(index) {
+      const modal = document.getElementById('valueModal');
+      const image = document.getElementById('valueModalImage');
+      const title = document.getElementById('valueModalTitle');
+      const desc = document.getElementById('valueModalDescription');
+      image.src = valueChain[index].image;
+      title.textContent = valueChain[index].title;
+      desc.innerHTML = valueChain[index].description;
+      modal.classList.add('active');
+    }
+
+    function closeValueModal() {
+      document.getElementById('valueModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

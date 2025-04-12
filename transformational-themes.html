@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Corp - Transformational Themes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <script>
+    if (!sessionStorage.getItem('isAuthenticated')) {
+      sessionStorage.setItem('redirectTo', window.location.pathname);
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <header class="header">
+    <div class="header-left">
+      <span class="company-name">XYZ Corp</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <span class="icon-wrapper">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-cog"></i>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-user"></i>
+        </span>
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar">
+    <ul>
+      <li><i class="fas fa-info-circle"></i><a href="about.html"> About XYZ</a></li>
+      <li><i class="fas fa-car"></i><a href="automotive-industry.html"> Automotive Industry</a></li>
+      <li><i class="fas fa-lightbulb"></i><a href="transformational-themes.html"> Transformational Themes</a></li>
+      <li><i class="fas fa-line-chart"></i><a href="#"> Business Process</a></li>
+      <li><i class="fas fa-laptop"></i><a href="#"> IT Process</a></li>
+      <li><i class="fas fa-leaf"></i><a href="#"> Environment</a></li>
+      <li><i class="fas fa-rocket"></i><a href="#"> Innovation</a></li>
+      <li><i class="fas fa-balance-scale"></i><a href="#"> Governance</a></li>
+      <li><i class="fas fa-trophy"></i><a href="#"> Awards & Recognition</a></li>
+      <li><i class="fas fa-video"></i><a href="#"> Marketing Training Video</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Transformational Themes</h1>
+        <p>Innovating the future of mobility</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Transformational Themes in the Automotive Business</h2>
+      <p>The key transformational themes in the automotive business today are electrification, autonomous driving, connectivity, shared mobility, and data-driven personalization. With a focus on transitioning to sustainable mobility solutions. Leveraging advanced technologies like artificial intelligence and the internet of things (IoT), to enhance the driving experience, and adapting business models to cater to evolving customer needs like car sharing and on-demand services.</p>
+    </div>
+    <br>
+    <h2>Theme Focus Areas</h2>
+    <div class="news-grid">
+      <div class="news-card" onclick="openModal(0)" style="height: fit-content;">
+        <img src="assets/themes/connected.jpg" alt="Connected Services Business">
+        <div class="news-content">
+          <h3 class="news-title">Connected Services Business</h3>
+        </div>
+      </div>
+      <div class="news-card" onclick="openModal(1)" style="height: 300px;">
+        <img src="assets/themes/shared.jpg" alt="Shared Mobility">
+        <div class="news-content">
+          <h3 class="news-title">Shared Mobility</h3>
+        </div>
+      </div>
+      <div class="news-card" onclick="openModal(2)" style="height: 300px;">
+        <img src="assets/themes/autonomous.jpg" alt="Autonomous Solutions">
+        <div class="news-content">
+          <h3 class="news-title">Autonomous Solutions</h3>
+        </div>
+      </div>
+      <div class="news-card" onclick="openModal(3)" style="height: 300px;">
+        <img src="assets/themes/ev.jpg" alt="Electric Vehicles">
+        <div class="news-content">
+          <h3 class="news-title">Electric Vehicles</h3>
+        </div>
+      </div>
+      <div class="news-card" onclick="openModal(4)" style="height: 300px;">
+        <img src="assets/themes/digital.jpg" alt="Digital Transformation">
+        <div class="news-content">
+          <h3 class="news-title">Digital Transformation</h3>
+        </div>
+      </div>
+      <div class="news-card" onclick="openModal(5)" style="height: 300px;">
+        <img src="assets/themes/sustainability.jpg" alt="Sustainability">
+        <div class="news-content">
+          <h3 class="news-title">Sustainability</h3>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="themeModal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <img id="modalImage" src="" alt="" />
+      <h2 id="modalTitle"></h2>
+      <div id="modalDescription"></div>
+    </div>
+  </div>
+
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>XYZ Assistant</h3>
+        <button class="close-chat" id="closeChat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <p>Hello! How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message..." />
+        <button id="sendMessage">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('themeModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+
+    const themes = [
+      {
+        title: "Connected Services Business",
+        image: "assets/themes/connected.jpg",
+        description: [
+          "Connected vehicles: Cars are becoming increasingly connected to the internet, enabling new features and services.",
+          "Enhanced user experience: Connectivity allows for personalized experiences, over-the-air updates, and access to a wide range of digital services.",
+          "New business models: Connected vehicles open up opportunities for subscription services, data analytics, and personalized marketing."
+        ]
+      },
+      {
+        title: "Shared Mobility",
+        image: "assets/themes/shared.jpg",
+        description: [
+          "Rise of ride-sharing and car-sharing services: Shared mobility solutions offer an alternative to traditional car ownership, addressing issues of traffic congestion and parking shortages.",
+          "Fleet management: Automotive manufacturers and service providers are developing new strategies for managing and optimizing shared vehicle fleets.",
+          "New business models: Shared mobility services are creating new business models for the automotive industry, such as subscription services and on-demand mobility platforms."
+        ]
+      },
+      {
+        title: "Autonomous Solutions",
+        image: "assets/themes/autonomous.jpg",
+        description: [
+          "Development of self-driving vehicles: Autonomous driving technology promises to revolutionize transportation, offering new levels of safety and convenience.",
+          "Impact on mobility: Autonomous vehicles could lead to changes in urban planning, public transportation, and individual mobility options.",
+          "Technological advancements: AI, machine learning, and advanced sensor technology are crucial for developing and deploying autonomous driving systems."
+        ]
+      },
+      {
+        title: "Electric Vehicles",
+        image: "assets/themes/ev.jpg",
+        description: [
+          "Transition to emissions-free mobility: The shift towards electric vehicles (EVs) is a global trend, driven by environmental concerns and regulatory pressures.",
+          "EV market growth: EV sales are expected to continue growing rapidly, impacting the entire automotive supply chain and aftersales services.",
+          "New technologies: Electrification necessitates advancements in battery technology, charging infrastructure, and electric powertrains."
+        ]
+      },
+      {
+        title: "Digital Transformation",
+        image: "assets/themes/digital.jpg",
+        description: [
+          "Data analytics: The automotive industry is leveraging data analytics to improve efficiency, personalize customer experiences, and optimize operations.",
+          "Software-defined vehicles: Software plays an increasingly important role in vehicle functionality, leading to the development of software-defined vehicles that can be updated and customized remotely.",
+          "E-commerce and digital retailing: Online platforms are transforming the way customers purchase and interact with vehicles, streamlining the sales process and offering new levels of convenience.",
+          "Manufacturing advancements: Technological advancements in manufacturing, such as 3D printing and automation, are improving efficiency and reducing costs."
+        ]
+      },
+      {
+        title: "Sustainability",
+        image: "assets/themes/sustainability.jpg",
+        description: [
+          "The automotive industry's future is increasingly focused on sustainability, driven by environmental concerns, regulations, and consumer demand, with key trends including electric vehicles, circular economy principles, and sustainable materials, aiming for a greener, more responsible future.",
+          "Electrification: The transition to electric vehicles (EVs) is a major focus, with governments and automakers investing heavily in EV infrastructure and production.",
+          "Circular Economy: Embracing circular economy principles, such as using recycled materials, designing for disassembly, and optimizing production processes, is crucial.",
+          "Sustainable Materials: The industry is exploring and adopting bio-based materials, recycled fabrics, and lightweight composites to reduce environmental impact.",
+          "Green Hydrogen: Green hydrogen, produced using renewable energy, is gaining traction as a potential solution for heavier transportation modes like trucks and buses.",
+          "Carbon Neutral Initiatives: The industry is implementing carbon-neutral initiatives, from manufacturing to vehicle use, with regulations like BS-VI norms encouraging cleaner technologies.",
+          "Government Initiatives: Governments are playing a key role by introducing regulations, incentive schemes, and policies to promote sustainability in the automotive sector.",
+          "ESG Compliance: Environmental, Social, and Governance (ESG) compliance is becoming increasingly important, with companies expected to adhere to standards that evaluate their environmental, social, and governance performance.",
+          "Data and Technology: Data analytics and digital technologies are being used to optimize production processes, improve fuel efficiency, and develop new sustainable solutions.",
+          "Mobility Ecosystems: The industry is moving beyond traditional car manufacturing to encompass broader mobility solutions, including shared mobility and digital services."
+        ]
+      }
+    ];
+
+    function openModal(index) {
+      const theme = themes[index];
+      modalImage.src = theme.image;
+      modalTitle.textContent = theme.title;
+      modalDescription.innerHTML = `<ul>${theme.description.map(item => `<li>${item}</li>`).join('')}</ul>`;
+      modal.classList.add("active");
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+    }
+  
+    function logout() {
+      sessionStorage.removeItem("isAuthenticated");
+      window.location.href = 'login.html';
+    }
+  </script>
+  </body>
+  </html>  

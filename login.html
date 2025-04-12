@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XYZ Corp - Login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2 id="form-title">Login to XYZ Corp - Knowledge Management Portal</h2>
+      <form id="login-form" onsubmit="login(event)">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <form id="register-form" style="display: none;" onsubmit="register(event)">
+        <input type="text" id="reg-name" placeholder="Name" required>
+        <input type="text" id="reg-username" placeholder="Username" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password" required>
+        <input type="password" id="reg-confirm-password" placeholder="Confirm Password" required>
+        <button type="submit">Register</button>
+      </form>
+      <form id="forgot-form" style="display: none;" onsubmit="resetPassword(event)">
+        <input type="email" id="forgot-email" placeholder="Enter your registered email" required>
+        <button type="submit">Send Reset Link</button>
+      </form>
+      <div class="forgot-password" onclick="toggleForgotPassword()">Forgot Password?</div>
+      <div class="form-toggle" onclick="toggleForm()">
+        Don't have an account? Register here
+      </div>
+    </div>
+  </div>
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      if (username === "employee1" && password === "Xyz@123") {
+        sessionStorage.setItem("isAuthenticated", true);
+        const redirectTo = sessionStorage.getItem("redirectTo") || "index.html";
+        sessionStorage.removeItem("redirectTo");
+        window.location.href = redirectTo;
+      } else {
+        alert("Invalid username or password.");
+      }
+    }
+    function toggleForm() {
+      const loginForm = document.getElementById("login-form");
+      const registerForm = document.getElementById("register-form");
+      const forgotForm = document.getElementById("forgot-form");
+      const title = document.getElementById("form-title");
+      const toggleText = document.querySelector(".form-toggle");
+      document.querySelector(".forgot-password").style.display = loginForm.style.display === "none" ? "block" : "none";
+
+      if (loginForm.style.display === "none") {
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+        forgotForm.style.display = "none";
+        title.textContent = "Login to XYZ Corp";
+        toggleText.textContent = "Don't have an account? Register here";
+      } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+        forgotForm.style.display = "none";
+        title.textContent = "Register at XYZ Corp";
+        toggleText.textContent = "Already have an account? Login here";
+      }
+    }
+    function toggleForgotPassword() {
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("register-form").style.display = "none";
+      document.getElementById("forgot-form").style.display = "block";
+      document.getElementById("form-title").textContent = "Reset Your Password";
+      document.querySelector(".form-toggle").textContent = "Back to Login";
+      document.querySelector(".form-toggle").onclick = function() {
+        document.getElementById("forgot-form").style.display = "none";
+        document.getElementById("login-form").style.display = "block";
+        document.getElementById("form-title").textContent = "Login to XYZ Corp";
+        document.querySelector(".form-toggle").textContent = "Don't have an account? Register here";
+        document.querySelector(".form-toggle").onclick = toggleForm;
+        document.querySelector(".forgot-password").style.display = "block";
+      };
+      document.querySelector(".forgot-password").style.display = "none";
+    }
+    function register(event) {
+      event.preventDefault();
+      const password = document.getElementById("reg-password").value;
+      const confirmPassword = document.getElementById("reg-confirm-password").value;
+      if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+      alert("Registration successful! You may now log in.");
+      toggleForm();
+    }
+    function resetPassword(event) {
+      event.preventDefault();
+      const email = document.getElementById("forgot-email").value;
+      if (email) {
+        alert("An email with a link to update your password has been sent to your registered email address");
+        document.querySelector(".form-toggle").click();
+      }
+    }
+    if (sessionStorage.getItem("isAuthenticated")) {
+      const redirectTo = sessionStorage.getItem("redirectTo") || "index.html";
+      window.location.href = redirectTo;
+    }
+  </script>
+</body>
+</html>

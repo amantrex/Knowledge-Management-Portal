@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Corp - About XYZ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script>
+    if (!sessionStorage.getItem('isAuthenticated')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <header class="header">
+    <div class="header-left">
+      <span class="company-name">XYZ Corp</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons">
+        <span class="icon-wrapper">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-cog"></i>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-user"></i>
+        </span>
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sidebar">
+    <ul>
+      <li><i class="fas fa-info-circle"></i><a href="about.html"> About XYZ</a></li>
+      <li><i class="fas fa-car"></i><a href="automotive-industry.html"> Automotive Industry</a></li>
+      <li><i class="fas fa-lightbulb"></i><a href="transformational-themes.html"> Transformational Themes</a></li>
+      <li><i class="fas fa-line-chart"></i><a href="#"> Business Process</a></li>
+      <li><i class="fas fa-laptop"></i><a href="#"> IT Process</a></li>
+      <li><i class="fas fa-leaf"></i><a href="#"> Environment</a></li>
+      <li><i class="fas fa-rocket"></i><a href="#"> Innovation</a></li>
+      <li><i class="fas fa-balance-scale"></i><a href="#"> Governance</a></li>
+      <li><i class="fas fa-trophy"></i><a href="#"> Awards & Recognition</a></li>
+      <li><i class="fas fa-video"></i><a href="#"> Marketing Training Video</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Welcome to XYZ Corp</h1>
+    <div class="card">
+      <p>XYZ Corp is a global leader in automotive innovation, headquartered in Silicon Valley, dedicated to revolutionizing mobility through advanced technology.</p>
+      <p>We specialize in cutting-edge solutions for electric, autonomous, and connected vehicles driving sustainability and efficiency in the industry.</p>
+      <p>With a workforce of over 10,000 employees and annual revenue exceeding $15 billion, we partner with OEMs worldwide to shape the future of transportation.</p>
+    </div>
+    <br>
+    <h2>Our Products</h2>
+    <div class="news-grid">
+      <div class="news-card" onclick="openProductModal(0)">
+        <img src="assets/products/product1.jpg" alt="Driver Assistance" />
+        <div class="news-content">
+          <h3 class="news-title">Driver Assistance Systems</h3>
+          <p class="news-excerpt">Advanced systems to enhance driver safety and experience.</p>
+        </div>
+      </div>
+      <div class="news-card" onclick="openProductModal(1)">
+        <img src="assets/products/product2.jpg" alt="Fleet Management" />
+        <div class="news-content">
+          <h3 class="news-title">Fleet Management Solutions</h3>
+          <p class="news-excerpt">Solutions for efficient fleet management and operations.</p>
+        </div>
+      </div>
+      <div class="news-card" onclick="openProductModal(2)">
+        <img src="assets/products/product3.jpg" alt="Connectivity" />
+        <div class="news-content">
+          <h3 class="news-title">Connectivity & Security</h3>
+          <p class="news-excerpt">Secure connectivity solutions for modern vehicles.</p>
+        </div>
+      </div>
+      <div class="news-card" onclick="openProductModal(3)">
+        <img src="assets/products/product4.jpg" alt="Smart Software" />
+        <div class="news-content">
+          <h3 class="news-title">Smart Vehicle Software</h3>
+          <p class="news-excerpt">Innovative software for smart vehicle functionality.</p>
+        </div>
+      </div>
+      <div class="news-card" onclick="openProductModal(4)">
+        <img src="assets/products/product5.jpg" alt="Electrical Systems" />
+        <div class="news-content">
+          <h3 class="news-title">Electrical Distribution Systems</h3>
+          <p class="news-excerpt">Efficient electrical distribution for vehicle systems.</p>
+        </div>
+      </div>
+      <div class="news-card" onclick="openProductModal(5)">
+        <img src="assets/products/product6.jpg" alt="Repair Services" />
+        <div class="news-content">
+          <h3 class="news-title">Repair Services</h3>
+          <p class="news-excerpt">Ensuring that products can be repaired precisely and promptly at a reasonable cost in case of failure.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="productModal" onclick="closeProductModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="closeProductModal()">&times;</button>
+      <img id="productModalImage" src="" alt="" />
+      <div id="productModalDescription"></div>
+    </div>
+  </div>
+
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>XYZ Assistant</h3>
+        <button class="close-chat" id="closeChat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <p>Hello! How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message..." />
+        <button id="sendMessage">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = [
+      {
+        title: "Driver Assistance Systems",
+        image: "assets/products/product1.jpg",
+        description: `<h2>Advanced Driver Assistance Systems (ADAS): Enhancing Safety and Comfort Through Intelligent Software</h2><br>
+        <p>Step into the future of driving with our cutting-edge Advanced Driver Assistance Systems (ADAS). More than just features, 
+          ADAS represents a sophisticated ecosystem of software-driven technologies designed to elevate driver awareness, 
+          significantly improve road safety, and enhance overall driving comfort. Our systems act as an intelligent co-pilot, 
+          constantly monitoring the vehicle's environment and assisting the driver in complex or critical situations.</p>
+          <br>
+        <p>Powered by robust software algorithms processing real-time data from sensors like cameras, radar, and lidar, our ADAS 
+          solutions enable a comprehensive suite of capabilities. This includes vital safety functions such as Automatic Emergency 
+          Braking (AEB), which can proactively mitigate or avoid collisions, Blind Spot Detection (BSD) for safer lane changes, and 
+          Lane Keeping Assist (LKA) to prevent unintended drifting. Convenience features like Adaptive Cruise Control (ACC) with Stop 
+          & Go functionality reduce driver fatigue during long journeys and in traffic congestion.</p>
+          <br>
+        <p>Our commitment lies in developing highly reliable, scalable, and integrated ADAS software that empowers vehicle manufacturers 
+            to deliver demonstrably safer and more intuitive driving experiences, forming a crucial foundation for the progression towards 
+            higher levels of vehicle automation.</p>`
+      },
+      {
+        title: "Fleet Management Solutions",
+        image: "assets/products/product2.jpg",
+        description:`<h2>Fleet Management Solutions: Driving Efficiency and Insight for Your Mobile Assets</h2>
+        <p>Unlock peak operational performance and gain unparalleled control over your vehicle fleet with our 
+          advanced Fleet Management Solutions. Designed for businesses reliant on mobile assets, our integrated 
+          platform leverages cutting-edge telematics and powerful software analytics to transform vehicle data 
+          into actionable intelligence. We provide the tools you need to streamline operations, enhance safety, 
+          ensure compliance, and significantly reduce operating costs.</p><br>
+        <p>Our solution offers a comprehensive suite of capabilities, starting with real-time GPS tracking and 
+          geofencing for complete asset visibility. Monitor vehicle health proactively with remote diagnostics 
+          and predictive maintenance alerts, minimizing unexpected downtime and optimizing service schedules. 
+          Improve driver safety and accountability through detailed behavior monitoring, capturing events like 
+          harsh braking, acceleration, and speeding, enabling targeted training and promoting responsible driving.</p><br>
+        <p>Furthermore, optimize fuel efficiency and productivity with intelligent route planning, dispatch management, 
+          and idle time reduction strategies. Our platform simplifies regulatory compliance, offering features like 
+          automated Hours of Service (HoS) logging and digital vehicle inspection reporting (DVIR). Through customizable 
+          dashboards and in-depth reporting, gain critical insights into your fleet's KPIs, empowering data-driven 
+          decisions to maximize your return on investment and maintain a competitive edge.</p>`
+      },
+      {
+        title: "Connectivity & Security",
+        image: "assets/products/product3.jpg",
+        description: `<h2>Automotive Connectivity & Security: Enabling the Secure Software-Defined Vehicle</h2>
+        <p>Navigate the future of mobility with our integrated Automotive Connectivity and Security solutions – 
+          the essential bedrock for the modern Software-Defined Vehicle (SDV). As vehicles evolve into 
+          sophisticated, connected platforms, ensuring seamless, reliable data exchange while guaranteeing 
+          robust protection against cyber threats is paramount. Our comprehensive software suite provides an 
+          end-to-end framework to manage both connectivity and security holistically.</p><br>
+          <p>Unlock powerful vehicle capabilities through advanced connectivity features powered by our software. 
+            This includes enabling Vehicle-to-Everything (V2X) communication for enhanced road safety and traffic 
+            efficiency, facilitating secure and efficient Over-the-Air (OTA) updates for software, firmware, and 
+            feature deployments, and supporting high-bandwidth in-vehicle networking. Our solutions provide the 
+            backbone for rich infotainment experiences, advanced telematics, remote diagnostics, and seamless 
+            cloud service integration.</p>`
+      },
+      {
+        title: "Smart Vehicle Software",
+        image: "assets/products/product4.jpg",
+        description: `<h2>Smart Vehicle Software: Powering the Future of Intelligent Mobility</h2>
+        <p>Our Smart Vehicle Software is the cutting-edge intelligence that powers the next 
+          generation of vehicles. It acts as the central nervous system, seamlessly integrating 
+          and managing all critical vehicle functions, from advanced driver-assistance systems 
+          (ADAS) and sophisticated infotainment to crucial safety features and over-the-air (OTA) 
+          updates. 1  Leveraging real-time data processing, our software enables features like 
+          adaptive cruise control, lane-keeping assist, automatic emergency braking, and blind-spot 
+          detection, significantly enhancing driver and passenger safety.</p><br>
+        <p>Beyond safety, our Smart Vehicle Software delivers a personalized and connected driving 
+          experience. It supports seamless integration with smartphones, smart devices, and cloud 
+          services, offering features like intelligent navigation with real-time traffic updates, 
+          voice-activated controls, and customized infotainment options. The software's modular 
+          and scalable architecture ensures future-readiness, allowing for continuous improvement 
+          and the addition of new functionalities through secure OTA updates. By optimizing vehicle 
+          performance, enhancing connectivity, and prioritizing safety, our Smart Vehicle Software 
+          is driving the evolution towards a smarter, more efficient, and enjoyable automotive future.</p><br>`
+      },
+      {
+        title: "Electrical Distribution Systems",
+        image: "assets/products/product5.jpg",
+        description: `<h2>Electrical Distribution Systems: Powering the Future of Automotive Innovation</h2>
+        <p>Our advanced Electrical Distribution Systems (EDS) are the crucial network ensuring reliable power 
+          delivery throughout modern vehicles. Designed for the increasing complexity of electrification, 
+          ADAS, infotainment, and connectivity, our EDS solutions manage power generation, storage, and 
+          distribution efficiently.</p><br>
+          <p>Key features include intelligent power management, advanced protection against overloads, 
+            scalable and modular designs for diverse platforms, lightweighting for improved efficiency 
+            (especially in EVs), robust connectivity for harsh environments, and smart diagnostics for 
+            easy maintenance. For electric vehicles, our systems handle high-voltage distribution to 
+            motors and charging systems. Our future-proof EDS provides the essential foundation for powering 
+            the evolving automotive landscape, ensuring safety, efficiency, and reliability for the vehicles 
+            of tomorrow.</p>`
+      },
+      {
+        title: "Repair Services",
+        image: "assets/products/product6.jpg",
+        description: `<h2>Repair Services: Ensuring Reliability and Longevity of Automotive Solutions</h2>
+        <p>Our comprehensive Repair Services leverage the latest advancements in automotive technology to 
+          ensure your vehicle receives the highest standard of care. We specialize in diagnosing and 
+          resolving complex issues in today's sophisticated vehicles, including electric and hybrid systems, 
+          advanced driver-assistance systems (ADAS), and intricate software integrations.</p><br>
+        <p>Our certified technicians utilize state-of-the-art diagnostic equipment, including AI-powered 
+          tools for rapid and accurate fault identification. We offer services ranging from traditional 
+          mechanical repairs to specialized services like ADAS calibration (ensuring sensors and cameras 
+          function correctly after windshield replacement or bodywork), electric vehicle battery diagnostics 
+          and repair, and over-the-air (OTA) software updates and troubleshooting. We also provide proactive 
+          maintenance services, utilizing data analytics to predict potential issues and prevent costly 
+          breakdowns. Our commitment is to provide efficient, reliable, and future-focused repair solutions, 
+          ensuring your vehicle remains safe, efficient, and performing at its best.</p>`
+      }
+    ];
+
+    function openProductModal(index) {
+      const modal = document.getElementById("productModal");
+      const image = document.getElementById("productModalImage");
+      const desc = document.getElementById("productModalDescription");
+      image.src = products[index].image;
+      desc.innerHTML = products[index].description;
+      modal.classList.add("active");
+    }
+
+    function closeProductModal() {
+     document.getElementById("productModal").classList.remove("active");
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.getElementById('productModal').classList.contains('active')) {
+      closeProductModal();
+      }
+    });
+
+    function logout() {
+      sessionStorage.removeItem('isAuthenticated');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

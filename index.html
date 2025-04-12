@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XYZ Corp - Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script>
+    if (!sessionStorage.getItem('isAuthenticated')) {
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <header class="header">
+    <div class="header-left">
+      <span class="company-name">XYZ Corp</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+
+      <!--Header Section-->
+    <div class="header-right" style="gap: 2rem; justify-content: space-around;">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+      <div class="header-icons" style="gap: 2rem; display: flex; align-items: center;">
+        <span class="icon-wrapper">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-cog"></i>
+        </span>
+        <span class="icon-wrapper">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
+      <button class="logout-btn" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+    <!--Sidebar Menu Section-->
+  <nav class="sidebar">
+    <ul>
+      <li><i class="fas fa-info-circle"></i><a href="about.html"> About XYZ</a></li>
+      <li><i class="fas fa-car"></i><a href="automotive-industry.html"> Automotive Industry</a></li>
+      <li><i class="fas fa-lightbulb"></i><a href="transformational-themes.html"> Transformational Themes</a></li>
+      <li><i class="fas fa-line-chart"></i><a href="#"> Business Process</a></li>
+      <li><i class="fas fa-laptop"></i><a href="#"> IT Process</a></li>
+      <li><i class="fas fa-leaf"></i><a href="#"> Environment</a></li>
+      <li><i class="fas fa-rocket"></i><a href="#"> Innovation</a></li>
+      <li><i class="fas fa-balance-scale"></i><a href="#"> Governance</a></li>
+      <li><i class="fas fa-trophy"></i><a href="#"> Awards & Recognition</a></li>
+      <li><i class="fas fa-video"></i><a href="#"> Marketing Training Video</a></li>
+    </ul>
+  </nav>
+
+  <!--Page Content-->
+    <!--Welcome Banner-->
+  <main class="content">
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <h1>Welcome back, Mike!</h1>
+        <p>Here's what's happening at XYZ Corp today</p>
+      </div>
+      <div class="date-time">
+        <span id="current-date"></span>
+        <span id="current-time"></span>
+      </div>
+    </div>
+
+      <!--News Section-->
+    <div class="news-section">
+      <h2>New at XYZ</h2>
+      <div class="news-grid">
+        <div class="news-card" style="height: max-content;">
+          <img src="assets/news/news1.jpg" alt="Electric Vehicle Launch" />
+          <div class="news-content">
+            <span class="news-date">April 8, 2025</span>
+            <h3 class="news-title">New Electric Vehicle Platform Launch</h3>
+            <p class="news-excerpt">XYZ Corp announces revolutionary electric vehicle platform with enhanced range and performance...<a href="#">Read more</a></p>
+          </div>
+        </div>
+        <div class="news-card" style="height: max-content;">
+          <img src="assets/news/news2.jpg" alt="AI Integration" />
+          <div class="news-content">
+            <span class="news-date">March 12, 2025</span>
+            <h3 class="news-title">AI Integration in Manufacturing</h3>
+            <p class="news-excerpt">Implementation of advanced AI systems in our manufacturing processes for improved efficiency...<a href="#">Read more</a></p>
+          </div>
+        </div>
+        <div class="news-card" style="height: max-content;">
+          <img src="assets/news/news3.jpg" alt="Sustainability Initiative" />
+          <div class="news-content">
+            <span class="news-date">February 22, 2025</span>
+            <h3 class="news-title">New Sustainability Initiative</h3>
+            <p class="news-excerpt">XYZ Corp commits to carbon neutrality by 2030 with new green energy programs to be launched globally...<a href="#">Read more</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <!--Quick Actions Section-->    
+    <div class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="card-grid">
+        <div class="action-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>View Reports</h3>
+          <p>Access latest reports and analytics</p>
+        </div>
+        <div class="action-card">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Training Schedule</h3>
+          <p>Review your upcoming training sessions schedule</p>
+        </div>
+        <div class="action-card" onclick="openTaskModal()">
+          <i class="fas fa-tasks"></i>
+          <h3>Task List</h3>
+          <p>Track your list of active tasks</p>
+        </div>
+        <div class="action-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Performance</h3>
+          <p>View your performance metrics dashboard</p>
+        </div>
+        <div class="action-card">
+          <i class="fas fa-video"></i>
+          <h3>Marketing Training Video</h3>
+          <p>Watch the marketing training videos</p>
+      </div>
+      <div class="action-card">
+        <i class="fas fa-trophy"></i>
+        <h3>Awards & Recognition</h3>
+        <p>View our latest acheivements</p>
+    </div>
+  </main>
+
+  <!--Modal Section-->
+  <div class="modal" id="taskModal" onclick="closeTaskModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="closeTaskModal()">&times;</button>
+      <h2>Task List</h2>
+      <div class="task-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Document Type</th>
+              <th>Document Name</th>
+              <th>Request Date</th>
+              <th>Requested By</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Handbook</td>
+              <td>App1_Handbook</td>
+              <td>11/25/2024</td>
+              <td>John Myers</td>
+              <td>Approve Request Change</td>
+            </tr>
+            <tr>
+              <td>Checklist</td>
+              <td>Transition_Checklist</td>
+              <td>11/22/2024</td>
+              <td>Rajesh Sharma</td>
+              <td>Approve Request Change</td>
+            </tr>
+            <tr>
+              <td>Business Process</td>
+              <td>Business_Process_ProcureToPay</td>
+              <td>11/27/2024</td>
+              <td>Mia Fernandes</td>
+              <td>Approve Request Change</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+    <!--Chat Section-->
+  <div class="chat-widget">
+    <button class="chat-toggle" id="chatToggle">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <h3>XYZ Assistant</h3>
+        <button class="close-chat" id="closeChat">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+          <p>Hello! How can I help you today?</p>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="messageInput" placeholder="Type your message..." />
+        <button id="sendMessage">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+      document.getElementById('current-time').textContent = now.toLocaleTimeString('en-US', {
+        hour: '2-digit', minute: '2-digit'
+      });
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const messageInput = document.getElementById('messageInput');
+    const sendMessage = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
+
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.toggle('active');
+    });
+    closeChat.addEventListener('click', () => {
+      chatWindow.classList.remove('active');
+    });
+    sendMessage.addEventListener('click', () => {
+      const message = messageInput.value.trim();
+      if (message) {
+        const userMsg = document.createElement('div');
+        userMsg.className = 'message user';
+        userMsg.innerHTML = `<p>${message}</p>`;
+        chatMessages.appendChild(userMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        messageInput.value = '';
+        setTimeout(() => {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'message bot';
+          botMsg.innerHTML = `<p>Thank you for your message. I'll get back to you shortly.</p>`;
+          chatMessages.appendChild(botMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 1000);
+      }
+    });
+    messageInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage.click();
+    });
+
+    function openTaskModal() {
+      const modal = document.getElementById('taskModal');
+      modal.classList.add('active');
+    }
+
+    function closeTaskModal() {
+      const modal = document.getElementById('taskModal');
+      modal.classList.remove('active');
+    }
+
+    function logout() {
+      sessionStorage.removeItem('isAuthenticated');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
